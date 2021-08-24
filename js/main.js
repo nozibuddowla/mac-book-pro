@@ -2,7 +2,7 @@
 function setValue(id,value) {
     document.getElementById(id).innerText = value;
 }
-// get value 
+// get value
 function getValue(id) {
     return document.getElementById(id).innerText;
 }
@@ -10,16 +10,16 @@ function getValue(id) {
 function showMemoryCost(value) {
     setValue('extra-memory-cost', value);
 }
-// extra storage price 
+// extra storage price
 function showStorageCost(value) {
     setValue('extra-storage-cost', value);
 }
-// function for showing delivery charge 
+// function for showing delivery charge
 function showDeliveryCharge(value) {
     setValue('delivery-charge-cost',value);
 }
-// function to get total price 
-function getTotalPrice()
+// function to get total price
+function updateTotalCost()
 {
     const bestPrice = parseInt(getValue('best-price'));
     const memoryCost = parseInt(getValue('extra-memory-cost'));
@@ -27,28 +27,28 @@ function getTotalPrice()
     const deliveryCharge = parseInt(getValue('delivery-charge-cost'));
     return bestPrice + memoryCost + storageCost + deliveryCharge;
 }
-// bonus Part-1 showing total cost without promo 
+// bonus Part-1 showing total cost without promo
 function showTotalPrice() {
-    const totalPrice = getTotalPrice();
+    const totalPrice = updateTotalCost();
     setValue('total-price',totalPrice);
     setValue('total-cost', totalPrice);
 }
 
 let promoCode = false;  //Initialize to check promo
 
-// bonus Part-2 showing total cost with promo 
+// bonus Part-2 showing total cost with promo
 function showTotalPriceWithPromo() {
     if(promoCode == true) {
-        const totalPrice = getTotalPrice();
+        const totalPrice = updateTotalCost();
         const afterPromoCost = totalPrice * 0.2;
         setValue('total-cost', totalPrice - afterPromoCost);
     }
 }
-// function for giving a color to promo message 
+// function for giving a color to promo message
 function messageColor(color) {
     document.getElementById('text-alert').style.color = color;
 }
-// update color 
+// update color
 function updateColor(id) {
     document.getElementById(id).style.color = 'white';
     document.getElementById(id).style.backgroundColor = 'black';
@@ -95,7 +95,7 @@ document.getElementById('promo-btn').addEventListener('click',function(){
     document.getElementById('promo-input').value = '';
 })
 
-// 256GB SSD storage button 
+// 256GB SSD storage button
 document.getElementById('storage-256gb-btn').addEventListener('click',function(){
     showStorageCost(0);
     showTotalPrice();
@@ -104,7 +104,7 @@ document.getElementById('storage-256gb-btn').addEventListener('click',function()
     resetColor('storage-512gb-btn');
     resetColor('storage-1tb-btn');
 })
-// 512GB SSD storage button 
+// 512GB SSD storage button
 document.getElementById('storage-512gb-btn').addEventListener('click',function(){
     showStorageCost(100);
     showTotalPrice();
@@ -113,7 +113,7 @@ document.getElementById('storage-512gb-btn').addEventListener('click',function()
     resetColor('storage-256gb-btn');
     resetColor('storage-1tb-btn');
 })
-// 1TB SSD storage button 
+// 1TB SSD storage button
 document.getElementById('storage-1tb-btn').addEventListener('click',function(){
     showStorageCost(180);
     showTotalPrice();
@@ -122,7 +122,7 @@ document.getElementById('storage-1tb-btn').addEventListener('click',function(){
     resetColor('storage-512gb-btn');
     resetColor('storage-256gb-btn');
 })
-// Free delivery cost button 
+// Free delivery cost button
 document.getElementById('delivery-free-btn').addEventListener('click',function(){
     showDeliveryCharge(0);
     showTotalPrice();
@@ -130,7 +130,7 @@ document.getElementById('delivery-free-btn').addEventListener('click',function()
     updateColor('delivery-free-btn');
     resetColor('delivery-paid-btn');
 })
-// Paid delivery cost button 
+// Paid delivery cost button
 document.getElementById('delivery-paid-btn').addEventListener('click',function(){
     showDeliveryCharge(20);
     showTotalPrice();
