@@ -49,12 +49,12 @@ function messageColor(color) {
     document.getElementById('text-alert').style.color = color;
 }
 // update color
-function updateColor(id) {
+function activeButton(id) {
     document.getElementById(id).style.color = 'white';
     document.getElementById(id).style.backgroundColor = 'black';
 }
 // reset color
-function resetColor(id) {
+function deactivateButton(id) {
     document.getElementById(id).style.color = 'black';
     document.getElementById(id).style.backgroundColor = 'white';
 }
@@ -63,15 +63,15 @@ document.getElementById('memory-8gb-btn').addEventListener('click',function() {
     showMemoryCost(0);
     showTotalPrice();
     showTotalPriceWithPromo();
-    updateColor('memory-8gb-btn');
-    resetColor('memory-16gb-btn');
+    activeButton('memory-8gb-btn');
+    deactivateButton('memory-16gb-btn');
 })
 document.getElementById('memory-16gb-btn').addEventListener('click',function() {
     showMemoryCost(180);
     showTotalPrice();
     showTotalPriceWithPromo();
-    updateColor('memory-16gb-btn');
-    resetColor('memory-8gb-btn');
+    activeButton('memory-16gb-btn');
+    deactivateButton('memory-8gb-btn');
 })
 // promo apply button
 document.getElementById('promo-btn').addEventListener('click',function(){
@@ -90,7 +90,7 @@ document.getElementById('promo-btn').addEventListener('click',function(){
     }
     else {
         messageColor('red');
-        setValue('coupon-alert','Invalid promo code!');
+        setValue('text-alert','Invalid promo code!');
     }
     document.getElementById('promo-input').value = '';
 })
@@ -100,41 +100,41 @@ document.getElementById('storage-256gb-btn').addEventListener('click',function()
     showStorageCost(0);
     showTotalPrice();
     showTotalPriceWithPromo();
-    updateColor('storage-256gb-btn');
-    resetColor('storage-512gb-btn');
-    resetColor('storage-1tb-btn');
+    activeButton('storage-256gb-btn');
+    deactivateButton('storage-512gb-btn');
+    deactivateButton('storage-1tb-btn');
 })
 // 512GB SSD storage button
 document.getElementById('storage-512gb-btn').addEventListener('click',function(){
     showStorageCost(100);
     showTotalPrice();
     showTotalPriceWithPromo();
-    updateColor('storage-512gb-btn');
-    resetColor('storage-256gb-btn');
-    resetColor('storage-1tb-btn');
+    activeButton('storage-512gb-btn');
+    deactivateButton('storage-256gb-btn');
+    deactivateButton('storage-1tb-btn');
 })
 // 1TB SSD storage button
 document.getElementById('storage-1tb-btn').addEventListener('click',function(){
     showStorageCost(180);
     showTotalPrice();
     showTotalPriceWithPromo();
-    updateColor('storage-1tb-btn');
-    resetColor('storage-512gb-btn');
-    resetColor('storage-256gb-btn');
+    activeButton('storage-1tb-btn');
+    deactivateButton('storage-512gb-btn');
+    deactivateButton('storage-256gb-btn');
 })
 // Free delivery cost button
 document.getElementById('delivery-free-btn').addEventListener('click',function(){
     showDeliveryCharge(0);
     showTotalPrice();
     showTotalPriceWithPromo();
-    updateColor('delivery-free-btn');
-    resetColor('delivery-paid-btn');
+    activeButton('delivery-free-btn');
+    deactivateButton('delivery-paid-btn');
 })
 // Paid delivery cost button
 document.getElementById('delivery-paid-btn').addEventListener('click',function(){
     showDeliveryCharge(20);
     showTotalPrice();
     showTotalPriceWithPromo();
-    updateColor('delivery-paid-btn');
-    resetColor('delivery-free-btn');
+    activeButton('delivery-paid-btn');
+    deactivateButton('delivery-free-btn');
 })
